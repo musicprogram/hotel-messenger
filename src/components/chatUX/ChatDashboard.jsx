@@ -15,7 +15,7 @@ export const ChatDashboard = () => {
         const userGet = `?user=${1}`
         const roomId = `&chat_room_id=${2}`
 
-        const urlBackWithParams = urlBackLocal + userGet + roomId
+        const urlBackWithParams = urlBackLocal + "/messages" + userGet + roomId
 
         fetch(urlBackWithParams)
             .then(res => res.json())

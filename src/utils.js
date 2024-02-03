@@ -10,3 +10,16 @@ export const formatHour = (created_at) => {
     const horaFormateada = formatoHora.format(fechaRails);
     return horaFormateada;
 }
+
+
+export const arrayRandom = (array) => {
+    // Generar un índice aleatorio dentro del rango del array
+    const indiceAleatorio = Math.floor(Math.random() * array.length);
+
+    // Obtener el número correspondiente al índice aleatorio
+    const numeroSeleccionado = array[indiceAleatorio];
+    // console.log("numeroSeleccionado " + numeroSeleccionado)
+
+    return numeroSeleccionado;
+}
+
