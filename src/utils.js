@@ -1,3 +1,6 @@
+import CryptoJS from 'crypto-js';
+
+
 export const formatHour = (created_at) => {
 
     // Suponiendo que @objeto_rails.create_date es la fecha en tu objeto Rails
@@ -23,3 +26,15 @@ export const arrayRandom = (array) => {
     return numeroSeleccionado;
 }
 
+
+export const encryptData = (data, secretKey) => {
+    const encrypted = CryptoJS.AES.encrypt(data, secretKey).toString();
+    localStorage.setItem('user', encrypted);
+};
+
+// Función para descifrar datos
+export const decryptData = (data, secretKey) => {
+    const bytes = CryptoJS.AES.decrypt(data, secretKey);
+    const decrypted = bytes.toString(CryptoJS.enc.Utf8);
+    return decrypted
+};

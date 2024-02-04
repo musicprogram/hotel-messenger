@@ -1,8 +1,20 @@
 import React, { useState } from 'react'
 import { FormInputsSign } from './FormInputsSign'
 import { userSignInFetch } from '../../fetch/userFetch';
+import { useNavigate } from 'react-router-dom';
+import CryptoJS from 'crypto-js';
+import { useRecoilState } from 'recoil';
+import { localStorageObj, localStorageUser } from '../../states/userStates';
+
 
 export const FormUserSign = ({ handleClose }) => {
+    const navigate = useNavigate();
+
+
+    const [userStorge, setUserStorge] = useRecoilState(localStorageUser);
+    const [userObj, setUserObj] = useRecoilState(localStorageObj);
+
+
 
     const [formData, setFormData] = useState({
         email: '',
@@ -17,8 +29,8 @@ export const FormUserSign = ({ handleClose }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const user = userSignInFetch(formData)
-        console.log(user)
+        userSignInFetch(formData, navigate, setUserObj)
+
     }
 
     return (

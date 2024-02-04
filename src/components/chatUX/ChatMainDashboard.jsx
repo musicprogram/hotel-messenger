@@ -1,10 +1,10 @@
 import actionCable from 'actioncable';
 import { useEffect, useState } from 'react';
-import { ChatDashboard } from './chatUX/ChatDashboard';
+import { ChatDashboard } from './ChatDashboard';
 import { useRecoilState } from 'recoil';
-import { myListOfChats } from '../states/chatMainStates';
+import { myListOfChats } from '../../states/chatMainStates';
 //"https://6kwgwvlg-3000.use2.devtunnels.ms/"
-export const MainDashboard = () => {
+export const ChatMainDashboard = () => {
    const cableApp = actionCable.createConsumer('ws://localhost:3000/cable');
    // Set up the connection with the backend, use your backend's host here
 

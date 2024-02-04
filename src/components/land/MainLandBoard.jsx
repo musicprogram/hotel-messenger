@@ -50,37 +50,32 @@ export const MainLandBoard = () => {
 
     return (
         <>
-            <div className={`relative animate__animated animate__fadeIn bg-cover min-h-screen`} style={{ backgroundImage: `url('/imagesLand/${myNum}.jpg')` }} >
-
-                <div className="absolute inset-0 bg-gradient-to-l from-purple-950 to-blue-950 opacity-60"></div>
-
-                <NavLand />
-
-                <div className="container pt-10 md:pt-36 mx-auto flex flex-wrap flex-col md:flex-row items-center relative z-10">
-                    {
-                        visible ? (
-
-                            <>
-                                <FormUserSign />
-                                <FooterLand />
-                            </>
-                        ) : (
-                            <>
-                                <TextLand />
-
-                                <CarouselImages imageObject={imageObject} />
-
-                                <SocialButtons />
 
 
-                            </>
-                        )
-                    }
+            <div className="container pt-10 md:pt-36 mx-auto flex flex-wrap flex-col md:flex-row items-center relative z-10">
+                {
+                    visible ? (
+
+                        <>
+                            <FormUserSign />
+                            <FooterLand />
+                        </>
+                    ) : (
+                        <>
+                            <TextLand />
+
+                            <CarouselImages imageObject={imageObject} />
+
+                            <SocialButtons />
+
+
+                        </>
+                    )
+                }
 
 
 
-                </div>
-            </div >
+            </div>
         </>
     )
 }
