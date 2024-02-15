@@ -4,7 +4,8 @@ import { userSignInFetch } from '../../fetch/userFetch';
 import { useNavigate } from 'react-router-dom';
 import CryptoJS from 'crypto-js';
 import { useRecoilState } from 'recoil';
-import { localStorageObj, localStorageUser } from '../../states/userStates';
+import toast from 'react-hot-toast';
+import { localStorageObj, localStorageSession, localStorageUser } from '../../states/userStates';
 
 
 export const FormUserSign = ({ handleClose }) => {
@@ -13,7 +14,7 @@ export const FormUserSign = ({ handleClose }) => {
 
     const [userStorge, setUserStorge] = useRecoilState(localStorageUser);
     const [userObj, setUserObj] = useRecoilState(localStorageObj);
-
+    const [session, setSession] = useRecoilState(localStorageSession)
 
 
     const [formData, setFormData] = useState({
@@ -29,7 +30,7 @@ export const FormUserSign = ({ handleClose }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        userSignInFetch(formData, navigate, setUserObj)
+        userSignInFetch(formData, navigate, setUserObj, setSession, toast)
 
     }
 

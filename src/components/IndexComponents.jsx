@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 
 import { RecoilRoot, useRecoilState } from 'recoil'
+import toast, { Toaster } from 'react-hot-toast';
+
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MainLandBoard } from './land/MainLandBoard';
@@ -11,6 +13,7 @@ import { objsImgs } from '../data/dataImages';
 import { arrayRandom, decryptData } from '../utils';
 import { secretKeyLocalHost } from '../conts';
 import { NavLand } from './land/NavLand';
+import { AccessLinkBoard } from './access_links/AccessLinkBoard';
 
 export const IndexComponents = () => {
     const [myNum, setNum] = useRecoilState(numBack); // Cambia 'inicial' por el valor inicial que desees
@@ -36,8 +39,9 @@ export const IndexComponents = () => {
         <>
             <div className={`relative animate__animated animate__fadeIn bg-cover min-h-screen`} style={{ backgroundImage: `url('/imagesLand/${myNum}.jpg')` }} >
                 <div className="absolute inset-0 bg-gradient-to-l from-purple-950 to-blue-950 opacity-60"></div>
-                <NavLand />
+
                 <BrowserRouter>
+                    <NavLand />
                     <Routes>
                         <Route
                             path="/"
@@ -48,8 +52,21 @@ export const IndexComponents = () => {
                         <Route
                             path="/admin"
                             element={<AdminDashboard />} />
+                        <Route
+                            path="/mensajes"
+                            element={<AccessLinkBoard />} />
+
                     </Routes>
                 </BrowserRouter>
+                <Toaster
+                    toastOptions={{
+                        style: {
+                            padding: '16px',
+                            color: '#581c87',
+                            backgroundColor: '#e9d5ff'
+                        }
+                    }}
+                />
             </div>
 
 

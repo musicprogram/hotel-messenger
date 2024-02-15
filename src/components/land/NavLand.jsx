@@ -1,5 +1,6 @@
 import React from 'react'
 import { useRecoilState } from 'recoil';
+import { useNavigate } from 'react-router-dom';
 
 
 import { localStorageObj, localStorageUser, modalUserSign, numBack } from '../../states/userStates';
@@ -12,12 +13,14 @@ export const NavLand = () => {
     const [myNum, setNum] = useRecoilState(numBack); // Cambia 'inicial' por el valor inicial que desees
     const [userObj, setUserObj] = useRecoilState(localStorageObj);
 
+    const navigate = useNavigate();
+    const navHome = useNavigate();
 
 
     const isForm = () => {
         if (userObj) {
-            // push an entry into the browser history stack and change the URL
-            window.history.pushState({}, undefined, "/admin");
+            navigate("/admin")
+
         } else {
             setVisible(!visible)
             const image = arrayRandom(objsImgs)
@@ -26,10 +29,19 @@ export const NavLand = () => {
 
     }
 
+
+    const isHome = () => {
+        navHome("/")
+        setVisible(false)
+    }
+
     return (
         <div className="w-full container mx-auto relative z-10 animate__animated  animate__bounceInLeft animate__faster">
             <div className="w-full flex items-center justify-between">
-                <a className="flex items-center text-purple-300 no-underline hover:no-underline font-bold text-2xl lg:text-4xl p-2" href="#">
+                <a
+                    onClick={isHome}
+                    className="flex items-center text-purple-300 no-underline hover:no-underline font-bold text-2xl lg:text-4xl p-2 cursor-pointer"
+                >
                     Hotel <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-purple-400 "> Messenger</span>
                 </a>
                 <div className="flex w-1/2 justify-end content-center">

@@ -14,6 +14,18 @@ export const formatHour = (created_at) => {
     return horaFormateada;
 }
 
+export const formatDateSimple = (date) => {
+
+    // Extraer los componentes de la fecha
+    let partesFecha = date.split(' ');
+    const day = partesFecha[2]
+    const month = partesFecha[1]
+    const myDate = day + " " + month
+
+    return myDate
+
+}
+
 
 export const arrayRandom = (array) => {
     // Generar un índice aleatorio dentro del rango del array
@@ -25,6 +37,12 @@ export const arrayRandom = (array) => {
 
     return numeroSeleccionado;
 }
+
+
+export const encryptAccessLink = (data, secretKey) => {
+    return CryptoJS.AES.encrypt(data, secretKey).toString();
+};
+
 
 
 export const encryptData = (data, secretKey) => {

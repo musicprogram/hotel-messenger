@@ -13,7 +13,6 @@ function App() {
 
   return (
     <RecoilRoot>
-
       <IndexComponents />
     </RecoilRoot>
   )
